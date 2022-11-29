@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pet</title>
+</head>
+<body>
+    {% block content %}
+
+    <h1>{{ pet.name }}</h1>
+
+    {% if pet.photo_url %}
+    <img src="{{ pet.photo_url }}">
+    {% endif %}
+
+    <h2>Edit</h2>
+
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden'%}
+
+    <div>
+        {{ field.label }}
+        <form method="POST">
+            <button type="submit">Update</button>
+        </form>
+    </div>
+    
+
+    {% endblock %}
+
+</body>
+</html>
